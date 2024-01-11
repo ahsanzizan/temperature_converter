@@ -53,7 +53,16 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              TextField(
+              TextFormField(
+                validator: (value) {
+                  if (value == null ||
+                      value.isEmpty ||
+                      value.runtimeType is! double) {
+                    return "Tolong masukkan sebuah nilai celcius";
+                  }
+
+                  return null;
+                },
                 keyboardType: TextInputType.number,
                 onChanged: (text) {
                   setState(() {
